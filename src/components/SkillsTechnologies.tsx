@@ -3,13 +3,16 @@ import { Card, CardContent } from '@/components/ui/card';
 import { 
   SiHtml5, SiCss3, SiJavascript, SiTypescript, SiReact, SiNextdotjs, 
   SiNodedotjs, SiExpress, SiMongodb, SiMariadb, SiTailwindcss, 
-  SiBootstrap, SiMui, SiWordpress, SiGithub, SiUbuntu,
+  SiBootstrap, SiMui, SiWordpress,
   SiSocketdotio,
   SiPostgresql,
   SiRedis,
   SiSwagger,
   SiGraphql,
-  SiFirebase
+  SiFirebase,
+  SiSass,
+  SiStyledcomponents,
+  SiCssmodules
 } from 'react-icons/si';
 import { IconType } from 'react-icons';
 
@@ -61,6 +64,9 @@ const skillCategories: SkillCategory[] = [
       { name: "Bootstrap", icon: SiBootstrap, color: "#7952B3" },
       { name: "Material-UI", icon: SiMui, color: "#0081CB" },
       { name: "shadcn/ui", icon: SiReact, color: "#000000" }, // Using React icon as placeholder
+      { name: "SCSS", icon: SiSass, color: "#CC6699" },
+      { name: "CSS-in-JS", icon: SiStyledcomponents, color: "#DB7093" },
+      { name: "CSS Modules", icon: SiCssmodules, color: "#000000" },
     ]
   },
   {

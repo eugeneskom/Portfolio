@@ -4,16 +4,16 @@ import { Progress } from '@/components/ui/progress';
 import { ChevronRight } from 'lucide-react';
 
 const skills = [
-  { name: 'HTML/CSS', level: 90 },
-  { name: 'JavaScript/TypeScript', level: 85 },
-  { name: 'React/Next.js', level: 80 },
-  { name: 'Node.js/Express.js', level: 75 },
-  { name: 'MongoDB/MariaDB', level: 70 },
+  { name: 'HTML/CSS', level: 95 },
+  { name: 'JavaScript/TypeScript', level: 90 },
+  { name: 'React/Next.js', level: 90 },
+  { name: 'Node.js/Express.js', level: 85 },
+  { name: 'MongoDB/MariaDB', level: 80 },
 ];
 
 const About = () => {
   return (
-    <section className="py-16 bg-gray-50">
+    <section className="py-16 bg-gray-50" id="about">
       <div className="container mx-auto px-4">
         <h2 className="text-3xl font-bold mb-8 text-center">About Me</h2>
         <div className="grid md:grid-cols-2 gap-8">
