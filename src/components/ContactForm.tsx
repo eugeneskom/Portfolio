@@ -46,7 +46,7 @@ const ContactForm: React.FC = () => {
   };
 
   return (
-    <section className="py-16 bg-gray-50">
+    <section className="py-16 bg-gray-50" id="contact">
       <div className="container mx-auto px-4">
         <h2 className="text-3xl font-bold mb-8 text-center">Get in Touch</h2>
         <Card className="max-w-2xl mx-auto">

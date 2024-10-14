@@ -107,7 +107,7 @@ const SkillCategory: React.FC<{ category: SkillCategory }> = ({ category }) => (
 
 const SkillsTechnologies: React.FC = () => {
   return (
-    <section className="py-16 bg-gray-50">
+    <section className="py-16 bg-gray-50" id="skills">
       <div className="container mx-auto px-4">
         <h2 className="text-3xl font-bold mb-8 text-center">Skills & Technologies</h2>
         {skillCategories.map((category, index) => (
