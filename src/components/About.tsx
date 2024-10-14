@@ -2,8 +2,13 @@ import React from 'react';
 import { Card, CardContent } from '@/components/ui/card';
 import { ChevronRight } from 'lucide-react';
 
+interface GradientProgressProps {
+  value: number;
+  startColor: string;
+  endColor: string;
+}
 // Custom Progress component
-const GradientProgress = ({ value, startColor, endColor }) => (
+const GradientProgress = ({ value, startColor, endColor }:GradientProgressProps) => (
   <div className="h-2 w-full bg-gray-200 rounded-full overflow-hidden">
     <div 
       className="h-full rounded-full" 
@@ -34,9 +39,9 @@ const About = () => {
             <h3 className="text-xl font-semibold mb-4">Who I Am</h3>
             <div className="flex-grow"> {/* Wrap paragraphs in a flex-grow div */}
               <p className="text-gray-600 mb-4">
-                I'm a passionate full-stack developer with a keen eye for creating 
+                I&apos;m a passionate full-stack developer with a keen eye for creating 
                 seamless user experiences. With extensive experience in both front-end 
-                and back-end technologies, I've successfully delivered projects ranging 
+                and back-end technologies, I&apos;ve successfully delivered projects ranging 
                 from e-commerce platforms to custom CRM solutions.
               </p>
               <p className="text-gray-600">
