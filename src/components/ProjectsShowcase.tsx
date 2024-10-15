@@ -100,7 +100,7 @@ interface Project {
 
 const ProjectCard = ({ project }:{project:Project}) => (
   <Card className="overflow-hidden">
-    <Image src={project.image} width="800" height="600" alt={project.title} className="w-full h-48 object-contain" />
+    <Image src={project.image} width="500" height="200" alt={project.title} className="w-full h-48 object-contain" />
     <CardContent className="p-4">
       <h3 className="text-xl font-bold mb-2">{project.title}</h3>
       <p className="text-gray-600 mb-4">{project.description}</p>
