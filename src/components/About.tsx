@@ -1,6 +1,5 @@
 import React from 'react';
 import { Card, CardContent } from '@/components/ui/card';
-import { ChevronRight } from 'lucide-react';
 
 interface GradientProgressProps {
   value: number;
@@ -72,11 +71,6 @@ const About = () => {
             </div>
           </CardContent>
         </Card>
-      </div>
-      <div className="mt-8 text-center">
-        <a href="#projects" className="inline-flex items-center text-blue-600 hover:text-blue-800">
-          View My Projects <ChevronRight className="ml-1 h-4 w-4" />
-        </a>
       </div>
     </div>
   </section>

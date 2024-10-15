@@ -63,10 +63,10 @@ const Footer: React.FC = () => {
           <div>
             <h3 className="text-xl font-semibold mb-4">About This Site</h3>
             <p className="mb-2">
-              Built with React, Next.js, and Tailwind CSS. Hosted on Vercel.
+              Built with React, Next.js, and Tailwind CSS. Hosted on Vercel and WordPress as Headless CMS.
             </p>
             <p>
-              © {currentYear} Your Name. All rights reserved.
+              © 2022 - {currentYear} Eugene Skomorokhov. All rights reserved.
             </p>
           </div>
         </div>
