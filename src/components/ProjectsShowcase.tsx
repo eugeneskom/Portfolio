@@ -11,7 +11,7 @@ const projects = [
     description: "A comprehensive logistics management system for trucking companies.",
     technologies: ["React", "Node.js", "MariaDB", "Express", "TypeScript", "Tailwind.css", "Rest API"],
     liveLink: "https://remberg.eugeneskom.com/",
-    githubLink: "https://github.com/yourusername/truckboard",
+    githubLink: "https://github.com/eugeneskom/remberg-front",
     image: "/images/truckboard.png"
   },
   {
@@ -35,7 +35,7 @@ const projects = [
     description: "An interactive web application simulating large-scale spending, featuring dynamic updates and real-time calculations.",
     technologies: ["TypeScript", "React", "WordPress", "REST API"],
     liveLink: "https://bedsteitest.dk/brug-sanjay-shahs-svindelformue/",
-    githubLink: "https://github.com/yourusername/crm-extension",
+    githubLink: "",
     image: "/images/calculator.png"
   },
   {
@@ -43,7 +43,7 @@ const projects = [
     description: "An award-winning digital production company specializing in immersive experiences, virtual production, and game development",
     technologies: ["SCSS", "HTML", "JavaScript", "WordPress"],
     liveLink: "https://icvr.io/",
-    githubLink: "https://github.com/yourusername/crm-extension",
+    githubLink: "",
     image: "/images/icvr.png"
   },
   {
@@ -51,15 +51,15 @@ const projects = [
     description: "Designed and developed a striking, emotion-driven portfolio website for a globe-trotting wedding photographer.",
     technologies: ["SCSS", "HTML", "JavaScript", "WordPress"],
     liveLink: "https://tatisimpson.com/",
-    githubLink: "https://github.com/yourusername/crm-extension",
+    githubLink: "",
     image: "/images/tati.png"
   },
   {
     title: "Medical Appointment Scheduler for Microsoft 365",
     description: "Developed a comprehensive medical appointment scheduling system integrated with Microsoft 365, using React.js. This application streamlines the process of booking and managing medical appointments for healthcare providers.",
     technologies: ["SCSS", "HTML", "JavaScript", "WordPress"],
-    liveLink: "https://tatisimpson.com/",
-    githubLink: "https://github.com/yourusername/crm-extension",
+    liveLink: "",
+    githubLink: "",
     image: "/images/medical-todo.png"
   },
   {
@@ -67,7 +67,7 @@ const projects = [
     description: "A Chrome extension integrating WhatsApp chat functionality for CRM systems.",
     technologies: ["TypeScript", "Chrome API", "React", "Firebase", "REST API"],
     liveLink: "https://chromewebstore.google.com/detail/funner/jkhecbecigibhenciiplohmdnkclhpfk",
-    githubLink: "https://github.com/yourusername/crm-extension",
+    githubLink: "",
     image: "/images/funner.png"
   },
   // {
