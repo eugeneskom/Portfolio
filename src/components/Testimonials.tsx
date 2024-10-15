@@ -5,11 +5,11 @@ import { Quote } from 'lucide-react';
 
 const testimonials = [
   {
-    name: "Sarah Johnson",
-    position: "CEO, TechInnovate",
-    company: "TechInnovate",
-    avatar: "/api/placeholder/100/100",
-    quote: "Working with this developer was an absolute pleasure. Their expertise in front-end development significantly improved our web application's performance and user experience. The attention to detail in implementing SEO-friendly semantic HTML was impressive."
+    name: "Anthony Gold",
+    position: "Mar 20, 2024",
+    company: "Golden Algo Technologies",
+    avatar: "/images/testimonials/AntonyGold.webp",
+    quote: "Very talented professional with an exceptional eye for detail. Their work consistently exceeds expectations, showcasing a unique blend of creativity and precision. Highly recommended for anyone seeking top-quality results."
   },
   {
     name: "Michael Chen",
@@ -41,7 +41,7 @@ const TestimonialCard: React.FC<{ testimonial: typeof testimonials[0] }> = ({ te
       <p className="text-gray-600 italic mb-4 flex-grow">{testimonial.quote}</p>
       <div className="flex items-center mt-4">
         <Avatar className="h-12 w-12 mr-4">
-          <AvatarImage src={testimonial.avatar} alt={testimonial.name} />
+          <AvatarImage className="object-cover" src={testimonial.avatar} alt={testimonial.name} width="24"/>
           <AvatarFallback>{testimonial.name.split(' ').map(n => n[0]).join('')}</AvatarFallback>
         </Avatar>
         <div>
