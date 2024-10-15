@@ -7,6 +7,7 @@ import { Button } from '@/components/ui/button';
 import { Label } from '@/components/ui/label';
 import { AlertCircle, CheckCircle2 } from 'lucide-react';
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
+import axios from 'axios';
 
 const ContactForm: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -31,14 +32,31 @@ const ContactForm: React.FC = () => {
     setIsSubmitting(true);
     setSubmitStatus(null);
 
-    // Simulating an API call
+    const data = new FormData();
+    data.append('action', 'submit_form');
+    Object.keys(formData).forEach(key => {
+      data.append(key, formData[key]);
+    });
+
     try {
-      // Replace this with your actual form submission logic
-      await new Promise(resolve => setTimeout(resolve, 2000));
-      setSubmitStatus('success');
-      setFormData({ name: '', email: '', subject: '', message: '' });
-      // eslint-disable-next-line
+      const response = await axios.post(
+        `https://api.eugeneskom.com/wp-admin/admin-ajax.php`,
+        data,
+        {
+          headers: {
+            'Content-Type': 'multipart/form-data',
+          },
+        }
+      );
+
+      if (response.data.success) {
+        setSubmitStatus('success');
+        setFormData({ name: '', email: '', subject: '', message: '' });
+      } else {
+        setSubmitStatus('error');
+      }
     } catch (error) {
+      console.error('Error:', error);
       setSubmitStatus('error');
     } finally {
       setIsSubmitting(false);
