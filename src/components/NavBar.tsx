@@ -1,19 +1,30 @@
-"use client"
-import React, { useState } from 'react';
-import { Menu, X } from 'lucide-react';
-import { Button } from '@/components/ui/button';
+"use client";
+import React, { useEffect, useState } from "react";
+import { Menu, X } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import axios from "axios";
 
 const Header: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const navItems = [
-    { label: 'Home', href: '#home' },
-    { label: 'About', href: '#about' },
-    { label: 'Projects', href: '#projects' },
-    { label: 'Skills', href: '#skills' },
-    { label: 'Blog', href: '#blog' },
-    { label: 'Contact', href: '#contact' },
+    { label: "Home", href: "#home" },
+    { label: "About", href: "#about" },
+    { label: "Projects", href: "#projects" },
+    { label: "Skills", href: "#skills" },
+    { label: "Blog", href: "#blog" },
+    { label: "Contact", href: "#contact" },
   ];
+
+  useEffect(() => {
+    const getPosts = async () => {
+      const response = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/posts`);
+      console.log("getPosts", response.data);
+    };
+
+    getPosts();
+    return () => {};
+  }, []);
 
   return (
     <header className="bg-white shadow-md">
@@ -27,11 +38,7 @@ const Header: React.FC = () => {
           {/* Desktop Navigation */}
           <nav className="hidden md:flex space-x-4">
             {navItems.map((item, index) => (
-              <a
-                key={index}
-                href={item.href}
-                className="text-gray-600 hover:text-blue-600 transition-colors"
-              >
+              <a key={index} href={item.href} className="text-gray-600 hover:text-blue-600 transition-colors">
                 {item.label}
               </a>
             ))}
@@ -39,12 +46,7 @@ const Header: React.FC = () => {
 
           {/* Mobile Menu Button */}
           <div className="md:hidden">
-            <Button
-              variant="ghost"
-              size="icon"
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
-              aria-label={isMenuOpen ? "Close menu" : "Open menu"}
-            >
+            <Button variant="ghost" size="icon" onClick={() => setIsMenuOpen(!isMenuOpen)} aria-label={isMenuOpen ? "Close menu" : "Open menu"}>
               {isMenuOpen ? <X /> : <Menu />}
             </Button>
           </div>
@@ -54,12 +56,7 @@ const Header: React.FC = () => {
         {isMenuOpen && (
           <nav className="md:hidden py-4">
             {navItems.map((item, index) => (
-              <a
-                key={index}
-                href={item.href}
-                className="block py-2 text-gray-600 hover:text-blue-600 transition-colors"
-                onClick={() => setIsMenuOpen(false)}
-              >
+              <a key={index} href={item.href} className="block py-2 text-gray-600 hover:text-blue-600 transition-colors" onClick={() => setIsMenuOpen(false)}>
                 {item.label}
               </a>
             ))}
