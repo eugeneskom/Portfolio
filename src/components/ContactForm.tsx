@@ -40,7 +40,7 @@ const ContactForm: React.FC = () => {
 
     try {
       const response = await axios.post(
-        `https://api.eugeneskom.com/wp-admin/admin-ajax.php`,
+        `${process.env.NEXT_PUBLIC_BACKEND_URL}/wp-admin/admin-ajax.php`,
         data,
         {
           headers: {
