@@ -18,6 +18,10 @@ export const metadata: Metadata = {
   title: "Eugene Skomorokhov | Front-End Developer & Full-Stack Expert",
   description: "Passionate front-end developer specializing in React, Next.js, and modern web technologies. Creating responsive, user-friendly applications with clean, efficient code. Expertise in full-stack development, e-commerce solutions, and custom dashboards.",
   openGraph: {
+    type: 'website',
+    locale: 'en_US',
+    url: 'https://www.eugeneskom.com', // Replace with your actual domain
+    siteName: 'Eugene Skomorokhov Portfolio',
     title: "Eugene Skomorokhov | Front-End Developer & Full-Stack Expert",
     description: "Crafting responsive, user-friendly web applications with React, Next.js, and modern technologies. Full-stack expertise in e-commerce, custom dashboards, and more.",
     images: [
@@ -29,13 +33,24 @@ export const metadata: Metadata = {
       },
     ],
   },
-  // twitter: {
-  //   card: "summary_large_image",
-  //   title: "Eugene Skomorokhov | Front-End Developer & Full-Stack Expert",
-  //   description: "Crafting responsive, user-friendly web applications with React, Next.js, and modern technologies. Full-stack expertise in e-commerce, custom dashboards, and more.",
-  //   images: ["/path-to-your-twitter-image.jpg"], // Replace with actual path to your Twitter card image
-  // },
-}
+  twitter: {
+    card: "summary_large_image",
+    site: "@yourtwitterhandle", // Replace with your Twitter handle
+    title: "Eugene Skomorokhov | Front-End Developer & Full-Stack Expert",
+    description: "Crafting responsive, user-friendly web applications with React, Next.js, and modern technologies. Full-stack expertise in e-commerce, custom dashboards, and more.",
+    images: ["/image/logo.jpg"], // Use the same image as OpenGraph
+  },
+
+  other: {
+    'pinterest-rich-pin': 'true',
+    'og:image:width': '1200',
+    'og:image:height': '630',
+    'og:site_name': 'Eugene Skomorokhov Portfolio',
+    'linkedin:owner': 'urn:li:page:d_flagship3_profile_view_base_contact_details;98b57415b', // Replace with your LinkedIn profile ID
+    'telegram:channel': '@eugeneskom', // Replace with your Telegram channel if you have one
+  },
+};
+
 
 export default function RootLayout({
   children,
