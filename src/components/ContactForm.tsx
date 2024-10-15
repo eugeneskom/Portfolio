@@ -35,7 +35,7 @@ const ContactForm: React.FC = () => {
     const data = new FormData();
     data.append('action', 'submit_form');
     Object.keys(formData).forEach(key => {
-      data.append(key, formData[key]);
+      data.append(key, formData[(key as keyof typeof formData)]);
     });
 
     try {
