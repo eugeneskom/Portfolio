@@ -1,8 +1,8 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, {  useState } from "react";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import axios from "axios";
+
 
 const Header: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -16,15 +16,7 @@ const Header: React.FC = () => {
     { label: "Contact", href: "#contact" },
   ];
 
-  useEffect(() => {
-    const getPosts = async () => {
-      const response = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/posts`);
-      console.log("getPosts", response.data);
-    };
 
-    getPosts();
-    return () => {};
-  }, []);
 
   return (
     <header className="bg-white shadow-md">
