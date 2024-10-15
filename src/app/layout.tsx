@@ -17,18 +17,18 @@ const geistMono = localFont({
 export const metadata: Metadata = {
   title: "Eugene Skomorokhov | Front-End Developer & Full-Stack Expert",
   description: "Passionate front-end developer specializing in React, Next.js, and modern web technologies. Creating responsive, user-friendly applications with clean, efficient code. Expertise in full-stack development, e-commerce solutions, and custom dashboards.",
-  // openGraph: {
-  //   title: "Eugene Skomorokhov | Front-End Developer & Full-Stack Expert",
-  //   description: "Crafting responsive, user-friendly web applications with React, Next.js, and modern technologies. Full-stack expertise in e-commerce, custom dashboards, and more.",
-  //   images: [
-  //     {
-  //       url: "/path-to-your-og-image.jpg", // Replace with actual path to your Open Graph image
-  //       width: 1200,
-  //       height: 630,
-  //       alt: "Eugene Skomorokhov - Front-End Developer",
-  //     },
-  //   ],
-  // },
+  openGraph: {
+    title: "Eugene Skomorokhov | Front-End Developer & Full-Stack Expert",
+    description: "Crafting responsive, user-friendly web applications with React, Next.js, and modern technologies. Full-stack expertise in e-commerce, custom dashboards, and more.",
+    images: [
+      {
+        url: "/image/logo.jpg", // Replace with actual path to your Open Graph image
+        width: 1200,
+        height: 630,
+        alt: "Eugene Skomorokhov - Front-End Developer",
+      },
+    ],
+  },
   // twitter: {
   //   card: "summary_large_image",
   //   title: "Eugene Skomorokhov | Front-End Developer & Full-Stack Expert",
