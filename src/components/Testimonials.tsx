@@ -41,7 +41,7 @@ const TestimonialCard: React.FC<{ testimonial: typeof testimonials[0] }> = ({ te
       <p className="text-gray-600 italic mb-4 flex-grow">{testimonial.quote}</p>
       <div className="flex items-center mt-4">
         <Avatar className="h-12 w-12 mr-4">
-          <AvatarImage className="object-cover" src={testimonial.avatar} alt={testimonial.name} width="24"/>
+          {/* <AvatarImage className="object-cover" src={testimonial.avatar} alt={testimonial.name} width="24"/> */}
           <AvatarFallback>{testimonial.name.split(' ').map(n => n[0]).join('')}</AvatarFallback>
         </Avatar>
         <div>
