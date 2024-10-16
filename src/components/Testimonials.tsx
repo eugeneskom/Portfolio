@@ -1,6 +1,8 @@
 import React from 'react';
 import { Card, CardContent } from '@/components/ui/card';
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
+import { Avatar, AvatarFallback,
+  //  AvatarImage
+   } from '@/components/ui/avatar';
 import { Quote } from 'lucide-react';
 
 const testimonials = [
