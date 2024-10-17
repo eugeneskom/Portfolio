@@ -4,6 +4,23 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Calendar } from "lucide-react";
 import Image from "next/image";
+import { Metadata } from 'next';
+
+interface RankMathSEO {
+  title: string;
+  description: string;
+  focuskw: string;
+  robots: {
+    index: string;
+    follow: string;
+  };
+  og_title: string;
+  og_description: string;
+  og_image: string;
+  twitter_title: string;
+  twitter_description: string;
+  twitter_image: string;
+}
 
 interface WordPressArticle {
   id: number;
@@ -21,6 +38,7 @@ interface WordPressArticle {
     }>;
   };
   slug: string;
+  rank_math_seo: RankMathSEO;
 }
 
 interface Tag {
@@ -51,7 +69,39 @@ async function getBlogPost(slug: string): Promise<BlogPostProps> {
   const article = postResponse.data[0];
   const tags = tagsResponse.data;
 
+  console.log("Full article data:", article);
+  console.log("SEO data:", article.rank_math_seo);
+
   return { article, tags };
+}
+
+export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
+  const { article } = await getBlogPost(params.slug);
+  const seo = article.rank_math_seo;
+
+  if (!seo) {
+    return {
+      title: article.title.rendered,
+    };
+  }
+  
+  return {
+    title: seo.title || article.title.rendered,
+    description: seo.description,
+    keywords: seo.focuskw,
+    robots: seo.robots,
+    openGraph: {
+      title: seo.og_title,
+      description: seo.og_description,
+      images: [{ url: seo.og_image }],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: seo.twitter_title,
+      description: seo.twitter_description,
+      images: [seo.twitter_image],
+    },
+  };
 }
 
 export default async function BlogPost({ params }: { params: { slug: string } }) {
@@ -91,6 +141,12 @@ export default async function BlogPost({ params }: { params: { slug: string } })
                 </Badge>
               ))}
             </div>
+            {article.rank_math_seo?.focuskw && (
+              <div className="mb-4">
+                <h2 className="text-xl font-semibold mb-2">Focus Keyword:</h2>
+                <p>{article.rank_math_seo.focuskw}</p>
+              </div>
+            )}
             <div className="prose max-w-none" dangerouslySetInnerHTML={{ __html: article.content.rendered }} />
           </CardContent>
         </Card>
