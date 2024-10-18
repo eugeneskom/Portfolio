@@ -122,8 +122,8 @@ export default async function BlogPost({ params }: { params: { slug: string } })
           <Image 
             src={featuredImageUrl} 
             alt={article.title.rendered} 
-            width={800}
-            height={400}
+            width={1200}
+            height={600}
             className="w-full h-64 object-cover"
           />
           <CardContent className="p-8">
