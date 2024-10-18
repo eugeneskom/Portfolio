@@ -76,3 +76,52 @@ body {
     @apply bg-background text-foreground;
   }
 }
+
+
+.wp-block-code {
+  background-color: #282c34;
+  border-radius: 6px;
+  padding: 16px;
+  margin: 20px 0;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  position: relative;
+  overflow-x: auto;
+}
+
+.wp-block-code::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 30px;
+  background: #21252b;
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;
+}
+
+.wp-block-code::after {
+  content: '•••';
+  position: absolute;
+  top: 7px;
+  left: 15px;
+  font-size: 18px;
+  letter-spacing: -1px;
+  color: #606570;
+}
+
+.wp-block-code code {
+  font-family: 'Fira Code', 'Consolas', 'Monaco', 'Andale Mono', 'Ubuntu Mono', monospace;
+  font-size: 14px;
+  line-height: 1.5;
+  color: #abb2bf;
+  display: block;
+  padding-top: 40px;
+}
+
+/* Syntax highlighting */
+.wp-block-code .keyword { color: #c678dd; }
+.wp-block-code .string { color: #98c379; }
+.wp-block-code .number { color: #d19a66; }
+.wp-block-code .function { color: #61afef; }
+.wp-block-code .comment { color: #5c6370; font-style: italic; }
