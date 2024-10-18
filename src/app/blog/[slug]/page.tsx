@@ -118,7 +118,7 @@ export default async function BlogPost({ params }: { params: { slug: string } })
   return (
     <section className="py-16 bg-gray-50">
       <div className="container mx-auto px-4">
-        <Card className="overflow-hidden max-w-3xl mx-auto">
+        <Card className="overflow-hidden max-w-7xl mx-auto">
           <Image 
             src={featuredImageUrl} 
             alt={article.title.rendered} 
