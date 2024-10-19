@@ -9,3 +9,5 @@ Tasks
 - add loading skeletons for the main page
 
 - fix errors that i get from lighthouse
+
+- fix links on the page when i am on post page can;t novigate to about on the main and so on
