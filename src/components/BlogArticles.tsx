@@ -64,6 +64,7 @@ const ArticleCard: React.FC<{ article: WordPressArticle; tags: Tag[] }> = ({ art
             Read More 
             {/* <ChevronRight className="ml-2 h-4 w-4" /> */}
           </Button>
+          <span className="sr-only">Read article {article.title.rendered}</span>
         </Link>
       </CardContent>
     </Card>
