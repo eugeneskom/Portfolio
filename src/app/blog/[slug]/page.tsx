@@ -123,7 +123,6 @@ export default async function BlogPost({ params }: { params: { slug: string } })
   const articleTags = tags.filter((tag) => article.tags.includes(tag.id));
   const shareUrl = `${process.env.NEXT_PUBLIC_SITE_URL}/blog/${params.slug}`;
   const shareTitle = encodeURIComponent(article.title.rendered);
-  // const shareText = encodeURIComponent(article.rank_math_seo?.description || "");
 
   return (
     <section className="py-16 bg-gray-50">
