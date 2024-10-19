@@ -11,7 +11,6 @@ import {
   SiGraphql,
   SiFirebase,
   SiSass,
-  SiStyledcomponents,
   SiCssmodules,
   SiNpm, 
   SiGit, 
@@ -69,7 +68,7 @@ const skillCategories: SkillCategory[] = [
       { name: "Material-UI", icon: SiMui, color: "#0081CB" },
       { name: "shadcn/ui", icon: SiReact, color: "#000000" }, // Using React icon as placeholder
       { name: "SCSS", icon: SiSass, color: "#CC6699" },
-      { name: "CSS-in-JS", icon: SiStyledcomponents, color: "#DB7093" },
+      // { name: "CSS-in-JS", icon: SiStyledcomponents, color: "#DB7093" },
       { name: "CSS Modules", icon: SiCssmodules, color: "#000000" },
     ]
   },
@@ -97,18 +96,19 @@ const skillCategories: SkillCategory[] = [
   }
 ];
 
+
 const SkillIcon: React.FC<Skill> = ({ icon: Icon, name, color }) => (
-  <div className="flex flex-col items-center">
-    <Icon className="text-4xl mb-2" style={{ color }} />
-    <span className="text-sm text-center">{name}</span>
+  <div className="flex flex-col items-center group">
+    <Icon className="text-4xl mb-2 transition-all duration-300 ease-in-out group-hover:scale-110" style={{ color }} />
+    <span className="text-sm text-center transition-all duration-300 ease-in-out group-hover:font-semibold">{name}</span>
   </div>
 );
 
 const SkillCategory: React.FC<{ category: SkillCategory }> = ({ category }) => (
-  <Card className="mb-6">
+  <Card className="mb-6 hover:shadow-lg transition-shadow duration-300">
     <CardContent className="p-6">
-      <h3 className="text-xl font-semibold mb-4">{category.name}</h3>
-      <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-4">
+      <h3 className="text-xl font-semibold mb-4 text-gray-800">{category.name}</h3>
+      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6">
         {category.skills.map((skill, index) => (
           <SkillIcon key={index} {...skill} />
         ))}
@@ -119,12 +119,14 @@ const SkillCategory: React.FC<{ category: SkillCategory }> = ({ category }) => (
 
 const SkillsTechnologies: React.FC = () => {
   return (
-    <section className="py-16 bg-gray-50" id="skills">
+    <section className="py-16 bg-gradient-to-b from-gray-50 to-white" id="skills">
       <div className="container mx-auto px-4">
-        <h2 className="text-3xl font-bold mb-8 text-center">Skills & Technologies</h2>
-        {skillCategories.map((category, index) => (
-          <SkillCategory key={index} category={category} />
-        ))}
+        <h2 className="text-3xl font-bold mb-8 text-center text-gray-800">Skills & Technologies</h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {skillCategories.map((category, index) => (
+            <SkillCategory key={index} category={category} />
+          ))}
+        </div>
       </div>
     </section>
   );
