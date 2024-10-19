@@ -89,7 +89,7 @@ export async function generateMetadata({ params }: { params: { slug: string } })
     title: seo.title || article.title.rendered,
     description: seo.description,
     keywords: seo.focuskw,
-    robots: seo.robots,
+    // robots: seo.robots,
     openGraph: {
       title: seo.og_title,
       description: seo.og_description,
@@ -118,7 +118,7 @@ export default async function BlogPost({ params }: { params: { slug: string } })
   return (
     <section className="py-16 bg-gray-50">
       <div className="container mx-auto px-4">
-        <Card className="overflow-hidden max-w-7xl mx-auto">
+        <Card className="overflow-hidden max-w-5xl mx-auto">
           <Image 
             src={featuredImageUrl} 
             alt={article.title.rendered} 

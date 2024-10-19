@@ -12,7 +12,10 @@ import {
   SiFirebase,
   SiSass,
   SiStyledcomponents,
-  SiCssmodules
+  SiCssmodules,
+  SiNpm, 
+  SiGit, 
+  SiRedux
 } from 'react-icons/si';
 import { IconType } from 'react-icons';
 
@@ -27,6 +30,7 @@ interface SkillCategory {
   name: string;
   skills: Skill[];
 }
+
 
 const skillCategories: SkillCategory[] = [
   {
@@ -81,6 +85,14 @@ const skillCategories: SkillCategory[] = [
       { name: "RESTful APIs", icon: SiSwagger, color: "#85EA2D" },
       { name: "GraphQL APIs", icon: SiGraphql, color: "#E10098" },
       { name: "Firebase", icon: SiFirebase, color: "#FFCA28" },
+    ]
+  },
+  {
+    name: "Development Tools & State Management",
+    skills: [
+      { name: "npm", icon: SiNpm, color: "#CB3837" },
+      { name: "Git", icon: SiGit, color: "#F05032" },
+      { name: "Redux Toolkit", icon: SiRedux, color: "#764ABC" },
     ]
   }
 ];
