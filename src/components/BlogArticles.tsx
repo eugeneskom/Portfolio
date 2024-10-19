@@ -42,7 +42,7 @@ const ArticleCard: React.FC<{ article: WordPressArticle; tags: Tag[] }> = ({ art
   return (
     <Card className="overflow-hidden">
       
-      <Image height="300" width="400" src={featuredImageUrl} alt={article.title.rendered} className="w-full h-48 object-cover" />
+      <Image height="192" width="484" src={featuredImageUrl} alt={article.title.rendered} className="w-full h-48 object-cover" />
       <CardContent className="p-6">
         <div className="flex justify-between items-center text-sm text-gray-500 mb-2">
           <div className="flex items-center">
