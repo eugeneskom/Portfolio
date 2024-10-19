@@ -27,9 +27,11 @@ const Hero: React.FC = () => {
         <div className="flex gap-4">
           <a href="https://github.com/eugeneskom" target="_blank" rel="noopener noreferrer" className="text-white hover:text-gray-200">
             <Github className="h-8 w-8" />
+            <div className="sr-only">My github page</div>
           </a>
           <a href="https://linkedin.com/in/yevhenii-skomorokhov-98b57415b" target="_blank" rel="noopener noreferrer" className="text-white hover:text-gray-200">
             <Linkedin className="h-8 w-8" />
+            <div className="sr-only">My Linkedin Page</div>
           </a>
         </div>
       </div>
