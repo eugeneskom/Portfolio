@@ -18,6 +18,18 @@ const geistMono = localFont({
 export const metadata: Metadata = {
   title: "Eugene Skomorokhov | Front-End Developer & Full-Stack Expert",
   description: "Passionate front-end developer specializing in React, Next.js, and modern web technologies. Creating responsive, user-friendly applications with clean, efficient code. Expertise in full-stack development, e-commerce solutions, and custom dashboards.",
+  keywords: [
+    "Front-End Developer",
+    "Full-Stack Developer",
+    "React",
+    "Next.js",
+    "Web Development",
+    "E-commerce",
+    "Custom Dashboards",
+    "Eugene Skomorokhov",
+    "SPA Development",
+    "MERN Stack",
+  ],
   openGraph: {
     type: 'website',
     locale: 'en_US',
