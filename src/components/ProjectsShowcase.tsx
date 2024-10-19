@@ -9,7 +9,7 @@ import axios from 'axios';
 
  
 
-interface Project {
+export interface Project {
   title: string;
   description: string;
   technologies: string[];
