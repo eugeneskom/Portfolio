@@ -59,7 +59,7 @@ const ArticleCard: React.FC<{ article: WordPressArticle; tags: Tag[] }> = ({ art
             </Badge>
           ))}
         </div>
-        <Link href={`/blog/${article.slug}`} className="text-blue-500 hover:underline block">
+        <Link href={`/blog/${article.slug}`} className="text-blue-700 hover:underline block">
           <Button variant="outline" className="w-full">
             Read More 
             {/* <ChevronRight className="ml-2 h-4 w-4" /> */}
