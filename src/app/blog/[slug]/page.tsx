@@ -83,21 +83,24 @@ export async function generateMetadata({ params }: { params: { slug: string } })
     };
   }
 
+  const featuredImageUrl = article._embedded?.["wp:featuredmedia"]?.[0]?.source_url || "/api/placeholder/800/400";
+
   return {
     title: seo.title || article.title.rendered,
     description: seo.description,
     keywords: seo.focuskw,
-    // robots: seo.robots,
     openGraph: {
-      title: seo.og_title,
-      description: seo.og_description,
-      images: [{ url: seo.og_image }],
+      title: seo.og_title || seo.title || article.title.rendered,
+      description: seo.og_description || seo.description,
+      images: [{ url: seo.og_image || featuredImageUrl }],
+      type: 'article',
+      url: `${process.env.NEXT_PUBLIC_SITE_URL}/blog/${params.slug}`,
     },
     twitter: {
-      card: "summary_large_image",
-      title: seo.twitter_title,
-      description: seo.twitter_description,
-      images: [seo.twitter_image],
+      card: 'summary_large_image',
+      title: seo.twitter_title || seo.og_title || seo.title || article.title.rendered,
+      description: seo.twitter_description || seo.og_description || seo.description,
+      images: [seo.twitter_image || seo.og_image || featuredImageUrl],
     },
   };
 }
