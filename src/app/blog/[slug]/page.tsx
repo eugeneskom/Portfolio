@@ -6,6 +6,7 @@ import { Calendar, Facebook, Linkedin, Send, Share2, Twitter } from "lucide-reac
 import Image from "next/image";
 import { Metadata } from "next";
 import { Button } from "@/components/ui/button";
+import './wp-content-styles.css';
 
 interface RankMathSEO {
   title: string;
