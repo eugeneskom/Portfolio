@@ -21,7 +21,7 @@ export interface Project {
 
 const ProjectCard: React.FC<{ project: Project }> = ({ project }) => (
   <Card className="overflow-hidden">
-    <Image src={project.image} width={478} height={192} alt={project.title} className="w-full h-48 object-contain" />
+    <Image src={project.image} width={478} height={192} alt={project.title} className="w-full h-48 object-cover object-top" />
     <CardContent className="p-4">
       <h3 className="text-xl font-bold mb-2">{project.title}</h3>
       <p className="text-gray-600 mb-4">{project.description}</p>
