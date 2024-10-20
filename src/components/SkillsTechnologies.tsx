@@ -14,7 +14,12 @@ import {
   SiCssmodules,
   SiNpm, 
   SiGit, 
-  SiRedux
+  SiRedux,
+  SiLinux,
+  SiDocker,
+  SiUbuntu,
+  SiNginx,
+  
 } from 'react-icons/si';
 import { IconType } from 'react-icons';
 
@@ -92,6 +97,15 @@ const skillCategories: SkillCategory[] = [
       { name: "npm", icon: SiNpm, color: "#CB3837" },
       { name: "Git", icon: SiGit, color: "#F05032" },
       { name: "Redux Toolkit", icon: SiRedux, color: "#764ABC" },
+    ]
+  },
+  {
+    name: "DevOps & Deployment",
+    skills: [
+      { name: "Ubuntu", icon: SiUbuntu, color: "#E95420" }, // Using Node icon as placeholder for Ubuntu
+      { name: "VPS Deployment", icon: SiLinux, color: "#008080" }, // Same placeholder, feel free to use custom icons
+      { name: "Docker", icon: SiDocker, color: "#2496ED" }, // Placeholder for Docker
+      { name: "Nginx", icon: SiNginx, color: "#269539" }, // Placeholder for Nginx
     ]
   }
 ];
