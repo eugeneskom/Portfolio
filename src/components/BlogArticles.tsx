@@ -44,7 +44,7 @@ const ArticleCard: React.FC<{ article: WordPressArticle; tags: Tag[] }> = ({ art
     <Card className="overflow-hidden">
       
       <Image height="192" width="484" src={featuredImageUrl} alt={article.title.rendered} className="w-full h-48 object-cover" />
-      <CardContent className="p-6">
+      <CardContent className="p-6 flex flex-col">
         <div className="flex justify-between items-center text-sm text-gray-500 mb-2">
           <div className="flex items-center">
             <Calendar className="w-4 h-4 mr-1" />
@@ -75,6 +75,13 @@ const ArticleCard: React.FC<{ article: WordPressArticle; tags: Tag[] }> = ({ art
 const BlogArticles: React.FC = () => {
   const [articles, setArticles] = useState<WordPressArticle[]>([]);
   const [tags, setTags] = useState<Tag[]>([]);
+  const [articlesCount, setArticlesCount] = useState(3);
+
+
+  const showAllArticles = () => {
+    setArticlesCount(articles.length);
+  }
+
 
   useEffect(() => {
     const fetchData = async () => {
@@ -100,22 +107,26 @@ const BlogArticles: React.FC = () => {
         <h2 className="text-3xl font-bold mb-8 text-center">Latest Articles</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {
-            articles.length === 0 ? Array(6).fill(null).map((item,index) =>(
+            articles.length === 0 ? Array(3).fill(null).map((item,index) =>(
               <ArticleCardSkeleton key={index}/>
             )
               
             ) : (
-              articles.map((article) => (
+              articles.slice(0, articlesCount).map((article) => (
                 <ArticleCard key={article.id} article={article} tags={tags} />
               ))
             )
           }
         </div>
-        <div className="text-center mt-12">
-          <Button>
-            View All Articles <ChevronRight className="ml-2 h-4 w-4" />
-          </Button>
-        </div>
+        {
+          articlesCount < articles.length && (
+            <div className="text-center mt-12">
+              <Button onClick={showAllArticles}>
+                View All Articles <ChevronRight className="ml-2 h-4 w-4" />
+              </Button>
+            </div>
+          )
+        }
       </div>
     </section>
   );

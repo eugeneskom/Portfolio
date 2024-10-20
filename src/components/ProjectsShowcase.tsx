@@ -1,14 +1,12 @@
-"use client"
-import React, { useEffect, useState } from 'react';
-import { Card, CardContent } from '@/components/ui/card';
-import { Badge } from '@/components/ui/badge';
-import { Button } from '@/components/ui/button';
-import { ExternalLink, Github } from 'lucide-react';
-import Image from 'next/image';
-import axios from 'axios';
-import ProjectCardSkeleton from './skeletons/ProjectCardSkeleton';
-
- 
+"use client";
+import React, { useEffect, useState } from "react";
+import { Card, CardContent } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { ChevronRight, ExternalLink, Github } from "lucide-react";
+import Image from "next/image";
+import axios from "axios";
+import ProjectCardSkeleton from "./skeletons/ProjectCardSkeleton";
 
 export interface Project {
   title: string;
@@ -27,7 +25,9 @@ const ProjectCard: React.FC<{ project: Project }> = ({ project }) => (
       <p className="text-gray-600 mb-4">{project.description}</p>
       <div className="flex flex-wrap gap-2 mb-4">
         {project.technologies.map((tech, index) => (
-          <Badge key={index} variant="secondary">{tech}</Badge>
+          <Badge key={index} variant="secondary">
+            {tech}
+          </Badge>
         ))}
       </div>
       <div className="flex gap-2">
@@ -54,6 +54,11 @@ const ProjectsShowcase: React.FC = () => {
   const [projects, setProjects] = useState<Project[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [projectsCount, setProjectsCount] = useState(3);
+
+  const showAllProjects = () => {
+    setProjectsCount(projects.length);
+  };
 
   useEffect(() => {
     let isMounted = true;
@@ -64,19 +69,19 @@ const ProjectsShowcase: React.FC = () => {
           // eslint-disable-next-line @typescript-eslint/no-explicit-any
           const fetchedProjects = response.data.map((project: any) => ({
             title: project.title.rendered,
-            description: project.project_meta.description || '',
+            description: project.project_meta.description || "",
             technologies: project.project_meta.technologies || [],
-            liveLink: project.project_meta.live_link || '',
-            githubLink: project.project_meta.github_link || '',
-            image: project.project_meta.image || '/placeholder-image.jpg',
+            liveLink: project.project_meta.live_link || "",
+            githubLink: project.project_meta.github_link || "",
+            image: project.project_meta.image || "/placeholder-image.jpg",
           }));
           setProjects(fetchedProjects);
           setLoading(false);
         }
       } catch (error) {
-        console.error('Error fetching projects:', error);
+        console.error("Error fetching projects:", error);
         if (isMounted) {
-          setError('Failed to fetch projects. Using hardcoded data.');
+          setError("Failed to fetch projects. Using hardcoded data.");
           // You might want to set some fallback projects here instead of using the state
           // setProjects(fallbackProjects);
           setLoading(false);
@@ -100,12 +105,18 @@ const ProjectsShowcase: React.FC = () => {
         {error && <p className="text-center text-red-500 mb-4">{error}</p>}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {loading
-            ? Array(6).fill(null).map((_, index) => (
-                <ProjectCardSkeleton key={index} />
-              ))
-            : projects.map((project, index) => (
-                <ProjectCard key={index} project={project} />
-              ))}
+            ? Array(3)
+                .fill(null)
+                .map((_, index) => <ProjectCardSkeleton key={index} />)
+            : projects.slice(0, projectsCount).map((project, index) => <ProjectCard key={index} project={project} />)}
+        </div>
+
+        <div className="text-center mt-12">
+          {projectsCount < projects.length && (
+            <Button onClick={showAllProjects}>
+              View All Projects <ChevronRight className="ml-2 h-4 w-4" />
+            </Button>
+          )}
         </div>
       </div>
     </section>
