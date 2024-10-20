@@ -1,6 +1,7 @@
 import React from "react";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Github, Linkedin } from "lucide-react";
+import { ArrowRight, Github, Linkedin, Send, Facebook } from "lucide-react";
+
 import Link from "next/link";
 
 const Hero: React.FC = () => {
@@ -32,6 +33,14 @@ const Hero: React.FC = () => {
           <a href="https://linkedin.com/in/yevhenii-skomorokhov-98b57415b" target="_blank" rel="noopener noreferrer" className="text-white hover:text-gray-200">
             <Linkedin className="h-8 w-8" />
             <div className="sr-only">My Linkedin Page</div>
+          </a>
+          <a href="https://t.me/eugeneskom" target="_blank" rel="noopener noreferrer" className="text-white hover:text-gray-200">
+            <Send className="h-8 w-8" />
+            <div className="sr-only">My Telegram Page</div>
+          </a>
+          <a href="https://www.facebook.com/profile.php?id=100011042891688" target="_blank" rel="noopener noreferrer" className="text-white hover:text-gray-200">
+            <Facebook className="h-8 w-8" />
+            <div className="sr-only">My Facebook Page</div>
           </a>
         </div>
       </div>
