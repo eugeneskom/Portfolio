@@ -6,6 +6,7 @@ import { Button } from '@/components/ui/button';
 import { ExternalLink, Github } from 'lucide-react';
 import Image from 'next/image';
 import axios from 'axios';
+import ProjectCardSkeleton from './ProjectCardSkeleton';
 
  
 
@@ -80,7 +81,7 @@ const ProjectsShowcase: React.FC = () => {
     fetchProjects();
   }, []);
 
-  if (loading) return <div>Loading projects...</div>;
+  // if (loading) return <div>Loading projects...</div>;
   if (error) console.warn(error); // We'll still show hardcoded projects, so just warn about the error
 
   return (
@@ -89,9 +90,18 @@ const ProjectsShowcase: React.FC = () => {
         <h2 className="text-3xl font-bold mb-8 text-center">Featured Projects</h2>
         {error && <p className="text-center text-red-500 mb-4">{error}</p>}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {projects.map((project, index) => (
+          {loading ? (
+            [1,2,3,4,5,6].map((index) => (
+              <ProjectCardSkeleton key={index} />
+            ))
+          ):(
+            projects.map((project, index) => (
+              <ProjectCard key={index} project={project} />
+            ))
+          )}
+          {/* {projects.map((project, index) => (
             <ProjectCard key={index} project={project} />
-          ))}
+          ))} */}
         </div>
       </div>
     </section>
