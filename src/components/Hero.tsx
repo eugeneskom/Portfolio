@@ -8,7 +8,7 @@ const Hero: React.FC = () => {
     <section className="bg-gradient-to-r from-blue-600 to-indigo-700 text-white">
       <div className="container mx-auto px-4 py-24 flex flex-col items-center text-center">
         <h1 className="text-4xl md:text-6xl font-bold mb-6">Hi, I&lsquo;m Eugene</h1>
-        <p className="text-xl md:text-2xl mb-8 max-w-2xl">I&lsquo;m a passionate front-end developer specializing in creating responsive, user-friendly web applications. With expertise in React, Next.js, and modern CSS frameworks, I bring designs to life with clean, efficient code.</p>
+        <p className="text-xl md:text-2xl mb-8 max-w-2xl">I&lsquo;m a passionate full-stack developer specializing in creating robust, scalable web applications. With expertise in React, Next.js, Node.js, and modern database technologies, I build comprehensive solutions from front-end to back-end.</p>
         <div className="flex flex-col sm:flex-row gap-4 mb-12">
           <Link href="#projects" passHref>
             <Button asChild size="lg" className="bg-white text-blue-600 hover:bg-gray-100">

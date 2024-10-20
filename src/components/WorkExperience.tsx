@@ -3,7 +3,45 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Briefcase, Calendar } from 'lucide-react';
 
-const experiences = [
+// Define the structure for a single technology
+type Technology = string;
+
+// Define the structure for a single responsibility
+type Responsibility = string;
+
+// Define the interface for a single work experience
+interface WorkExperience {
+  company: string;
+  location: string;
+  position: string;
+  duration: string;
+  startDate: string;
+  endDate: string;
+  responsibilities: Responsibility[];
+  technologies: Technology[];
+}
+
+// Define the type for the array of work experiences
+type WorkExperienceArray = WorkExperience[];
+
+const experiences:WorkExperienceArray = [
+  {
+    company: "Freelance",
+    location: "Remote",
+    position: "Full-Stack Developer",
+    duration: "Current",
+    startDate: "2023",
+    endDate: "Present",
+    responsibilities: [
+      "Develop full-stack web applications using React, Next.js, and Node.js",
+      "Design and implement database schemas using MongoDB, MariaDB, and PostgreSQL",
+      "Create RESTful and GraphQL APIs for seamless front-end and back-end integration",
+      "Implement responsive designs with Tailwind CSS and other modern CSS frameworks",
+      "Deploy and maintain applications on VPS using Ubuntu, Docker, and Nginx",
+      "Collaborate with clients to understand requirements and deliver high-quality solutions"
+    ],
+    technologies: ["React", "Next.js", "Node.js", "Express.js", "MongoDB", "PostgreSQL", "Docker", "GraphQL", "Tailwind CSS"]
+  },
   {
     company: "Tel Aviv Pituah",
     location: "Israel",
@@ -18,14 +56,29 @@ const experiences = [
       "Utilized version control systems (Git) for efficient code management and collaboration",
       "Participated in code reviews and implemented best practices for clean, maintainable code",
       "Worked on optimizing web applications for maximum speed and scalability",
-      "Assisted in the implementation of state management solutions using Redux and Context API",
-      "Contributed to the development of reusable component libraries to ensure consistency across projects"
+      "Assisted in the implementation of state management solutions using Redux Toolkit"
     ],
-    technologies: ["React", "Next.js", "JavaScript", "TypeScript", "Tailwind CSS", "Git", "RESTful APIs"]
+    technologies: ["React", "Next.js", "TypeScript", "Tailwind CSS", "Git", "RESTful APIs", "Redux Toolkit"]
+  },
+  {
+    company: "Freelance",
+    location: "Remote",
+    position: "Web Developer",
+    duration: "7 months",
+    startDate: "2022",
+    endDate: "2022",
+    responsibilities: [
+      "Developed responsive websites using HTML, CSS, and JavaScript",
+      "Created and customized WordPress themes and plugins",
+      "Implemented design mockups into functional web pages",
+      "Collaborated with clients to gather requirements and deliver projects on time",
+      "Optimized website performance and implemented SEO best practices"
+    ],
+    technologies: ["HTML", "CSS", "SCSS", "JavaScript", "WordPress"]
   }
 ];
 
-const ExperienceCard: React.FC<{ experience: typeof experiences[0] }> = ({ experience }) => (
+const ExperienceCard = ({ experience }:{experience:WorkExperience}) => (
   <Card className="mb-6">
     <CardContent className="p-6">
       <div className="flex justify-between items-start mb-4">
@@ -55,7 +108,7 @@ const ExperienceCard: React.FC<{ experience: typeof experiences[0] }> = ({ exper
   </Card>
 );
 
-const WorkExperience: React.FC = () => {
+const WorkExperience = () => {
   return (
     <section className="py-16 bg-gray-50">
       <div className="container mx-auto px-4">
