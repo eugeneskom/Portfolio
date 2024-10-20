@@ -6,7 +6,7 @@ import { Button } from '@/components/ui/button';
 import { ExternalLink, Github } from 'lucide-react';
 import Image from 'next/image';
 import axios from 'axios';
-import ProjectCardSkeleton from './ProjectCardSkeleton';
+import ProjectCardSkeleton from './skeletons/ProjectCardSkeleton';
 
  
 
@@ -56,33 +56,42 @@ const ProjectsShowcase: React.FC = () => {
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
+    let isMounted = true;
     const fetchProjects = async () => {
       try {
         const response = await axios.get(`${process.env.NEXT_PUBLIC_BACKEND_URL}/wp-json/wp/v2/project?_embed`);
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        const fetchedProjects = response.data.map((project: any) => ({
-          title: project.title.rendered,
-          description: project.project_meta.description || '',
-          technologies: project.project_meta.technologies || [],
-          liveLink: project.project_meta.live_link || '',
-          githubLink: project.project_meta.github_link || '',
-          image: project.project_meta.image || '/placeholder-image.jpg',
-        }));
-        setProjects(fetchedProjects);
-        setLoading(false);
+        if (isMounted) {
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
+          const fetchedProjects = response.data.map((project: any) => ({
+            title: project.title.rendered,
+            description: project.project_meta.description || '',
+            technologies: project.project_meta.technologies || [],
+            liveLink: project.project_meta.live_link || '',
+            githubLink: project.project_meta.github_link || '',
+            image: project.project_meta.image || '/placeholder-image.jpg',
+          }));
+          setProjects(fetchedProjects);
+          setLoading(false);
+        }
       } catch (error) {
         console.error('Error fetching projects:', error);
-        setError('Failed to fetch projects. Using hardcoded data.');
-        setProjects(projects);
-        setLoading(false);
+        if (isMounted) {
+          setError('Failed to fetch projects. Using hardcoded data.');
+          // You might want to set some fallback projects here instead of using the state
+          // setProjects(fallbackProjects);
+          setLoading(false);
+        }
       }
     };
 
     fetchProjects();
+
+    return () => {
+      isMounted = false;
+    };
   }, []);
 
-  // if (loading) return <div>Loading projects...</div>;
-  if (error) console.warn(error); // We'll still show hardcoded projects, so just warn about the error
+  if (error) console.warn(error);
 
   return (
     <section className="py-16 bg-gray-50" id="projects">
@@ -90,18 +99,13 @@ const ProjectsShowcase: React.FC = () => {
         <h2 className="text-3xl font-bold mb-8 text-center">Featured Projects</h2>
         {error && <p className="text-center text-red-500 mb-4">{error}</p>}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {loading ? (
-            [1,2,3,4,5,6].map((index) => (
-              <ProjectCardSkeleton key={index} />
-            ))
-          ):(
-            projects.map((project, index) => (
-              <ProjectCard key={index} project={project} />
-            ))
-          )}
-          {/* {projects.map((project, index) => (
-            <ProjectCard key={index} project={project} />
-          ))} */}
+          {loading
+            ? Array(6).fill(null).map((_, index) => (
+                <ProjectCardSkeleton key={index} />
+              ))
+            : projects.map((project, index) => (
+                <ProjectCard key={index} project={project} />
+              ))}
         </div>
       </div>
     </section>
