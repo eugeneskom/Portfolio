@@ -90,3 +90,10 @@ body {
     opacity: .5;
   }
 }
+
+.hero-section{
+  background-image: url('../../public/images/hero.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}

@@ -6,8 +6,16 @@ import Link from "next/link";
 
 const Hero: React.FC = () => {
   return (
-    <section className="bg-gradient-to-r from-blue-600 to-indigo-700 text-white">
-      <div className="container mx-auto px-4 py-24 flex flex-col items-center text-center">
+    <section className=" relative bg-gradient-to-r from-blue-600 to-indigo-700 text-white">
+       {/* Background image */}
+       <div 
+        className="hero-section absolute inset-0 bg-cover bg-center z-0" 
+      ></div>
+      
+      {/* Overlay */}
+      <div className="absolute inset-0 bg-black opacity-50 z-10"></div>
+      
+      <div className="container mx-auto px-4 py-24 flex flex-col items-center text-center relative z-20">
         <h1 className="text-4xl md:text-6xl font-bold mb-6">Hi, I&lsquo;m Eugene</h1>
         <p className="text-xl md:text-2xl mb-8 max-w-2xl">I&lsquo;m a passionate full-stack developer specializing in creating robust, scalable web applications. With expertise in React, Next.js, Node.js, and modern database technologies, I build comprehensive solutions from front-end to back-end.</p>
         <div className="flex flex-col sm:flex-row gap-4 mb-12">
