@@ -99,7 +99,7 @@ const Testimonials: React.FC = () => {
         <div className="text-center mt-12">
           {toShow < testimonials.length && (
             <Button onClick={handleShowMore}>
-              View All Projects <ChevronRight className="ml-2 h-4 w-4" />
+              View All Testimonials <ChevronRight className="ml-2 h-4 w-4" />
             </Button>
           )}
         </div>
