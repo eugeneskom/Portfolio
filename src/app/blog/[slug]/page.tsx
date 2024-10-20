@@ -148,12 +148,7 @@ export default async function BlogPost({ params }: { params: { slug: string } })
                 </Badge>
               ))}
             </div>
-            {article.rank_math_seo?.focuskw && (
-              <div className="mb-4">
-                <h2 className="text-xl font-semibold mb-2">Focus Keyword:</h2>
-                <p>{article.rank_math_seo.focuskw}</p>
-              </div>
-            )}
+          
             <div className="prose max-w-none" dangerouslySetInnerHTML={{ __html: article.content.rendered }} />
             {/* Social Sharing Section */}
             <div className="mt-8">
