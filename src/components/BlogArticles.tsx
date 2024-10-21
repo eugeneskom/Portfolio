@@ -1,5 +1,7 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { 
+  // useEffect, 
+  useState } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -8,10 +10,10 @@ import {
   // Clock,
   ChevronRight,
 } from "lucide-react";
-import axios from "axios";
+// import axios from "axios";
 import Image from "next/image";
 import Link from "next/link";
-import ArticleCardSkeleton from "./skeletons/ArticleCardSkeleton";
+// import ArticleCardSkeleton from "./skeletons/ArticleCardSkeleton";
 
 interface WordPressArticle {
   id: number;
@@ -72,61 +74,36 @@ const ArticleCard: React.FC<{ article: WordPressArticle; tags: Tag[] }> = ({ art
   );
 };
 
-const BlogArticles: React.FC = () => {
-  const [articles, setArticles] = useState<WordPressArticle[]>([]);
-  const [tags, setTags] = useState<Tag[]>([]);
-  const [articlesCount, setArticlesCount] = useState(3);
 
+interface BlogArticlesProps {
+  articles: WordPressArticle[];
+  tags: Tag[];
+}
+
+
+const BlogArticles: React.FC<BlogArticlesProps> = ({ articles, tags }) => {
+  const [articlesCount, setArticlesCount] = useState(3);
 
   const showAllArticles = () => {
     setArticlesCount(articles.length);
-  }
-
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const [postsResponse, tagsResponse] = await Promise.all([axios.get(`${process.env.NEXT_PUBLIC_API_URL}/posts?_embed`), axios.get(`${process.env.NEXT_PUBLIC_API_URL}/tags`)]);
-
-        setArticles(postsResponse.data);
-        setTags(tagsResponse.data);
-
-        console.log("Posts:", postsResponse.data);
-        console.log("Tags:", tagsResponse.data);
-      } catch (error) {
-        console.error("Error fetching data:", error);
-      }
-    };
-
-    fetchData();
-  }, []);
+  };
 
   return (
     <section className="py-16 bg-gray-50" id="blog">
       <div className="container mx-auto px-4">
         <h2 className="text-3xl font-bold mb-8 text-center">Latest Articles</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {
-            articles.length === 0 ? Array(3).fill(null).map((item,index) =>(
-              <ArticleCardSkeleton key={index}/>
-            )
-              
-            ) : (
-              articles.slice(0, articlesCount).map((article) => (
-                <ArticleCard key={article.id} article={article} tags={tags} />
-              ))
-            )
-          }
+          {articles.slice(0, articlesCount).map((article) => (
+            <ArticleCard key={article.id} article={article} tags={tags} />
+          ))}
         </div>
-        {
-          articlesCount < articles.length && (
-            <div className="text-center mt-12">
-              <Button onClick={showAllArticles}>
-                View All Articles <ChevronRight className="ml-2 h-4 w-4" />
-              </Button>
-            </div>
-          )
-        }
+        {articlesCount < articles.length && (
+          <div className="text-center mt-12">
+            <Button onClick={showAllArticles}>
+              View All Articles <ChevronRight className="ml-2 h-4 w-4" />
+            </Button>
+          </div>
+        )}
       </div>
     </section>
   );
