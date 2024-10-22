@@ -16,19 +16,27 @@ export interface Project {
 }
 
 const ProjectCard: React.FC<{ project: Project }> = ({ project }) => (
-  <Card className="overflow-hidden">
-    <Image src={project.image} width={478} height={192} alt={project.title} className="w-full h-48 object-cover object-top" />
-    <CardContent className="p-4">
-      <h3 className="text-xl font-bold mb-2">{project.title}</h3>
-      <p className="text-gray-600 mb-4">{project.description}</p>
-      <div className="flex flex-wrap gap-2 mb-4">
-        {project.technologies.map((tech, index) => (
-          <Badge key={index} variant="secondary">
-            {tech}
-          </Badge>
-        ))}
+  <Card className="overflow-hidden flex flex-col h-full">
+    <Image 
+      src={project.image} 
+      width={478} 
+      height={192} 
+      alt={project.title} 
+      className="w-full h-48 object-cover object-top" 
+    />
+    <CardContent className="p-4 flex flex-col flex-1">
+      <div className="flex-1"> {/* This div will take up remaining space */}
+        <h3 className="text-xl font-bold mb-2">{project.title}</h3>
+        <p className="text-gray-600 mb-4">{project.description}</p>
+        <div className="flex flex-wrap gap-2 mb-4">
+          {project.technologies.map((tech, index) => (
+            <Badge key={index} variant="secondary">
+              {tech}
+            </Badge>
+          ))}
+        </div>
       </div>
-      <div className="flex gap-2">
+      <div className="flex gap-2 mt-auto pt-4"> {/* mt-auto pushes it to bottom */}
         {project.liveLink && (
           <Button asChild variant="outline" size="sm">
             <a href={project.liveLink} target="_blank" rel="noopener noreferrer">

@@ -15,7 +15,7 @@ import { Suspense } from "react";
 
 async function getProjects() {
   const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/wp-json/custom/v1/projects`, {
-    next: { revalidate: 10 } // Cache for 1 hour
+    next: { revalidate: 3600 } // Cache for 1 hour
   })
   
   if (!res.ok) {
