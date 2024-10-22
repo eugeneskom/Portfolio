@@ -13,44 +13,23 @@ import { Suspense } from "react";
 
 
 
-interface Project {
-  id: number;
-  title: {
-    rendered: string;
-  };
-  project_meta: {
-    description: string;
-    live_link: string;
-    github_link: string;
-    technologies: string[];
-    image: string;
-  };
-  // eslint-disable-next-line
-  _embedded?: any;
-}
-
-export async function getProjects(): Promise<Project[]> {
-  const res = await fetch(
-    `${process.env.NEXT_PUBLIC_BACKEND_URL}/wp-json/wp/v2/project?_embed&per_page=100`, 
-    {
-      next: { revalidate: 100 },
-      headers: {
-        'Cache-Control': 'max-age=3600'
-      }
-    }
-  );
-
+async function getProjects() {
+  const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/wp-json/custom/v1/projects`, {
+    next: { revalidate: 10 } // Cache for 1 hour
+  })
+  
   if (!res.ok) {
-    throw new Error('Failed to fetch projects');
+    throw new Error('Failed to fetch projects')
   }
-
-  return res.json();
+ 
+  return res.json()
 }
+
 
 export default async function Home() {
 
   const projectsData = await getProjects()
-  console.log('projectsData',projectsData.length)
+  console.log('projectsData',projectsData)
   // eslint-disable-next-line
   const projects = projectsData.map((project: any) => ({
     title: project.title.rendered,
