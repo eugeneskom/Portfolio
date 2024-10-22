@@ -10,25 +10,52 @@ import Testimonials from "@/components/Testimonials";
 import ContactForm from "@/components/ContactForm";
 import BlogDataFetcher from "@/components/BlogDataFetcher";
 import { Suspense } from "react";
+import axios from 'axios';
+import { cache } from 'react';
 
-
-
-async function getProjects() {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/wp-json/wp/v2/project?_embed`, {
-    next: { revalidate: 3600 } // Cache for 1 hour
-  })
-  
-  if (!res.ok) {
-    throw new Error('Failed to fetch projects')
-  }
- 
-  return res.json()
+interface Project {
+  id: number;
+  title: {
+    rendered: string;
+  };
+  project_meta: {
+    description: string;
+    live_link: string;
+    github_link: string;
+    technologies: string[];
+    image: string;
+  };
+  // eslint-disable-next-line
+  _embedded?: any;
 }
+
+// Use React's cache function to handle caching
+export const getProjects = cache(async (): Promise<Project[]> => {
+  try {
+    const response = await axios.get<Project[]>(
+      `${process.env.NEXT_PUBLIC_BACKEND_URL}/wp-json/wp/v2/project`, {
+        params: {
+          _embed: true,
+          per_page: 100
+        },
+        headers: {
+          'Cache-Control': 'max-age=3600'
+        }
+      }
+    );
+
+    return response.data;
+  } catch (error) {
+    console.error('Error fetching projects:', error);
+    throw new Error('Failed to fetch projects');
+  }
+});
 
 
 export default async function Home() {
 
   const projectsData = await getProjects()
+  console.log('projectsData',projectsData.length)
   // eslint-disable-next-line
   const projects = projectsData.map((project: any) => ({
     title: project.title.rendered,
