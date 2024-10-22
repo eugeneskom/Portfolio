@@ -10,8 +10,8 @@ import Testimonials from "@/components/Testimonials";
 import ContactForm from "@/components/ContactForm";
 import BlogDataFetcher from "@/components/BlogDataFetcher";
 import { Suspense } from "react";
-import axios from 'axios';
-import { cache } from 'react';
+
+
 
 interface Project {
   id: number;
@@ -29,28 +29,23 @@ interface Project {
   _embedded?: any;
 }
 
-// Use React's cache function to handle caching
-export const getProjects = cache(async (): Promise<Project[]> => {
-  try {
-    const response = await axios.get<Project[]>(
-      `${process.env.NEXT_PUBLIC_BACKEND_URL}/wp-json/wp/v2/project`, {
-        params: {
-          _embed: true,
-          per_page: 100
-        },
-        headers: {
-          'Cache-Control': 'max-age=3600'
-        }
+export async function getProjects(): Promise<Project[]> {
+  const res = await fetch(
+    `${process.env.NEXT_PUBLIC_BACKEND_URL}/wp-json/wp/v2/project?_embed&per_page=100`, 
+    {
+      next: { revalidate: 100 },
+      headers: {
+        'Cache-Control': 'max-age=3600'
       }
-    );
+    }
+  );
 
-    return response.data;
-  } catch (error) {
-    console.error('Error fetching projects:', error);
+  if (!res.ok) {
     throw new Error('Failed to fetch projects');
   }
-});
 
+  return res.json();
+}
 
 export default async function Home() {
 
