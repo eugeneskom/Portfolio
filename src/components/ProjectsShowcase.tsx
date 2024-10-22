@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -61,11 +61,40 @@ interface ProjectsShowcaseProps {
 }
 
 const ProjectsShowcase: React.FC<ProjectsShowcaseProps> = ({ projects }) => {
-  const [projectsCount, setProjectsCount] = useState(3);
-
-  const showAllProjects = () => {
-    setProjectsCount(projects.length);
+  // Set initial count based on window width if in browser
+  const getInitialCount = () => {
+    if (typeof window !== 'undefined') {
+      const width = window.innerWidth;
+      // md breakpoint (768px) to lg breakpoint (1024px)
+      const isTablet = width >= 768 && width < 1024;
+      return isTablet ? 4 : 3;
+    }
+    return 3; // Default for server-side rendering
   };
+
+  const [projectsCount, setProjectsCount] = useState(getInitialCount());
+
+  const showMoreProjects = () => {
+    const width = window.innerWidth;
+    const isTablet = width >= 768 && width < 1024;
+    const increment = isTablet ? 4 : 3;
+    
+    setProjectsCount(prevCount => 
+      Math.min(prevCount + increment, projects.length)
+    );
+  };
+
+  useEffect(() => {
+    const handleResize = () => {
+      const width = window.innerWidth;
+      const isTablet = width >= 768 && width < 1024;
+      setProjectsCount(isTablet ? 4 : 3);
+    };
+
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   return (
     <section className="py-16 bg-gray-50" id="projects">
@@ -79,8 +108,8 @@ const ProjectsShowcase: React.FC<ProjectsShowcaseProps> = ({ projects }) => {
 
         <div className="text-center mt-12">
           {projectsCount < projects.length && (
-            <Button onClick={showAllProjects}>
-              View All Projects <ChevronRight className="ml-2 h-4 w-4" />
+            <Button onClick={showMoreProjects}>
+              View More Projects <ChevronRight className="ml-2 h-4 w-4" />
             </Button>
           )}
         </div>
