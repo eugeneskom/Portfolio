@@ -1,5 +1,6 @@
 "use client";
 import React, { 
+  useEffect,
   // useEffect, 
   useState } from "react";
 import { Card, CardContent } from "@/components/ui/card";
@@ -80,13 +81,41 @@ interface BlogArticlesProps {
   tags: Tag[];
 }
 
-
 const BlogArticles: React.FC<BlogArticlesProps> = ({ articles, tags }) => {
-  const [articlesCount, setArticlesCount] = useState(3);
-
-  const showAllArticles = () => {
-    setArticlesCount(articles.length);
+  // Set initial count based on window width if in browser
+  const getInitialCount = () => {
+    if (typeof window !== 'undefined') {
+      const width = window.innerWidth;
+      // md breakpoint (768px) to lg breakpoint (1024px)
+      const isTablet = width >= 768 && width < 1024;
+      return isTablet ? 4 : 3;
+    }
+    return 3; // Default for server-side rendering
   };
+
+  const [articlesCount, setArticlesCount] = useState(getInitialCount());
+
+  const showMoreArticles = () => {
+    const width = window.innerWidth;
+    const isTablet = width >= 768 && width < 1024;
+    const increment = isTablet ? 2 : 3;
+    
+    setArticlesCount(prevCount => 
+      Math.min(prevCount + increment, articles.length)
+    );
+  };
+
+  useEffect(() => {
+    const handleResize = () => {
+      const width = window.innerWidth;
+      const isTablet = width >= 768 && width < 1024;
+      setArticlesCount(isTablet ? 2 : 3);
+    };
+
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   return (
     <section className="py-16 bg-gray-50" id="blog">
@@ -99,8 +128,8 @@ const BlogArticles: React.FC<BlogArticlesProps> = ({ articles, tags }) => {
         </div>
         {articlesCount < articles.length && (
           <div className="text-center mt-12">
-            <Button onClick={showAllArticles}>
-              View All Articles <ChevronRight className="ml-2 h-4 w-4" />
+            <Button onClick={showMoreArticles}>
+              View More Articles <ChevronRight className="ml-2 h-4 w-4" />
             </Button>
           </div>
         )}
