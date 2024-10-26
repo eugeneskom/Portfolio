@@ -24,7 +24,7 @@ const Header: React.FC = () => {
         <div className="flex justify-between items-center py-4">
           {/* Logo/Name */}
           <div className="text-xl font-bold text-blue-600">
-            <a href="#home">ESkomorokhov</a>
+            <a href="/#home">ESkomorokhov</a>
           </div>
 
           {/* Desktop Navigation */}
