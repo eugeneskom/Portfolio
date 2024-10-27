@@ -128,9 +128,14 @@ const BlogArticles: React.FC<BlogArticlesProps> = ({ articles, tags }) => {
         </div>
         {articlesCount < articles.length && (
           <div className="text-center mt-12">
-            <Button onClick={showMoreArticles}>
+            <Link href="/articles" passHref>
+
+            <Button 
+            // onClick={showMoreArticles}
+            >
               View More Articles <ChevronRight className="ml-2 h-4 w-4" />
             </Button>
+            </Link>
           </div>
         )}
       </div>

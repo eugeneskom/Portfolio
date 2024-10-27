@@ -1,7 +1,7 @@
 import React from 'react';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { Input } from "@/components/ui/input";
-import { Search } from "lucide-react";
+// import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+// import { Input } from "@/components/ui/input";
+// import { Search } from "lucide-react";
 import Link from 'next/link';
 import Header from '@/components/NavBar';
 
@@ -22,7 +22,7 @@ export default function ArticlesLayout({
           </p>
           
           {/* Search and Filter Bar */}
-          <div className="flex flex-col sm:flex-row gap-4 max-w-4xl mx-auto">
+          {/* <div className="flex flex-col sm:flex-row gap-4 max-w-4xl mx-auto">
             <div className="relative flex-1">
               <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
               <Input
@@ -53,7 +53,7 @@ export default function ArticlesLayout({
                 <SelectItem value="popular">Most Popular</SelectItem>
               </SelectContent>
             </Select>
-          </div>
+          </div> */}
         </div>
       </div>
 

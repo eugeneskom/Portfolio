@@ -5,7 +5,7 @@ import Image from 'next/image';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Calendar } from 'lucide-react';
-import { Tag, WordPressArticle } from './[slug]/page';
+import { Tag, WordPressArticle } from '../blog/[slug]/page';
 
 export interface ArticlesPageProps {
   articles: WordPressArticle[];
@@ -30,7 +30,7 @@ export default async function ArticlesPage() {
   return (
     <section className="py-16 bg-gray-50">
       <div className="container mx-auto px-4">
-        <h1 className="text-4xl font-bold text-center mb-12">Latest Articles</h1>
+        {/* <h1 className="text-4xl font-bold text-center mb-12">Latest Articles</h1> */}
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {articles.map((article) => {
