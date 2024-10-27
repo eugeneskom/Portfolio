@@ -95,15 +95,15 @@ const BlogArticles: React.FC<BlogArticlesProps> = ({ articles, tags }) => {
 
   const [articlesCount, setArticlesCount] = useState(getInitialCount());
 
-  const showMoreArticles = () => {
-    const width = window.innerWidth;
-    const isTablet = width >= 768 && width < 1024;
-    const increment = isTablet ? 2 : 3;
+  // const showMoreArticles = () => {
+  //   const width = window.innerWidth;
+  //   const isTablet = width >= 768 && width < 1024;
+  //   const increment = isTablet ? 2 : 3;
     
-    setArticlesCount(prevCount => 
-      Math.min(prevCount + increment, articles.length)
-    );
-  };
+  //   setArticlesCount(prevCount => 
+  //     Math.min(prevCount + increment, articles.length)
+  //   );
+  // };
 
   useEffect(() => {
     const handleResize = () => {
