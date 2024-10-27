@@ -8,7 +8,7 @@ import { Metadata } from "next";
 import { Button } from "@/components/ui/button";
 import './wp-content-styles.css';
 
-interface RankMathSEO {
+export interface RankMathSEO {
   title: string;
   description: string;
   focuskw: string;
@@ -24,7 +24,7 @@ interface RankMathSEO {
   twitter_image: string;
 }
 
-interface WordPressArticle {
+export interface WordPressArticle {
   id: number;
   date: string;
   title: {
@@ -43,12 +43,12 @@ interface WordPressArticle {
   rank_math_seo: RankMathSEO;
 }
 
-interface Tag {
+export interface Tag {
   id: number;
   name: string;
 }
 
-interface BlogPostProps {
+export interface BlogPostProps {
   article: WordPressArticle;
   tags: Tag[];
 }

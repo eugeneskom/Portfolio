@@ -1,4 +1,4 @@
-import Header from '@/components/NavBar';
+// import Header from '@/components/NavBar';
 import React from 'react'
 
 function layout({
@@ -8,7 +8,7 @@ function layout({
 }>) {
   return (
     <div>
-      <Header />
+      {/* <Header /> */}
       {children}
     </div>
   )
