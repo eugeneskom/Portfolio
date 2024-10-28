@@ -1,15 +1,13 @@
 import React from 'react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { Briefcase, Calendar } from 'lucide-react';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { Briefcase, Calendar, Building2, MapPin } from 'lucide-react';
 
-// Define the structure for a single technology
+// Types remain the same as in your original code
 type Technology = string;
-
-// Define the structure for a single responsibility
 type Responsibility = string;
 
-// Define the interface for a single work experience
 interface WorkExperience {
   company: string;
   location: string;
@@ -21,10 +19,7 @@ interface WorkExperience {
   technologies: Technology[];
 }
 
-// Define the type for the array of work experiences
-type WorkExperienceArray = WorkExperience[];
-
-const experiences:WorkExperienceArray = [
+const experiences: WorkExperience[] = [
   {
     company: "Freelance",
     location: "Remote",
@@ -78,34 +73,43 @@ const experiences:WorkExperienceArray = [
   }
 ];
 
-const ExperienceCard = ({ experience }:{experience:WorkExperience}) => (
-  <Card className="mb-6">
-    <CardContent className="p-6">
-      <div className="flex justify-between items-start mb-4">
-        <div>
-          <h3 className="text-xl font-semibold">{experience.position}</h3>
-          <p className="text-gray-600">{experience.company}, {experience.location}</p>
+const ExperienceContent = ({ experience }: { experience: WorkExperience }) => (
+  <div className="space-y-4">
+    <div className="flex justify-between items-start">
+      <div className="space-y-1">
+        <div className="flex items-center space-x-2">
+          <Building2 className="w-4 h-4 text-gray-500" />
+          <span className="text-gray-600">{experience.company}</span>
         </div>
-        <Badge variant="secondary" className="flex items-center">
-          <Calendar className="w-4 h-4 mr-1" />
-          {experience.startDate} - {experience.endDate}
-        </Badge>
+        <div className="flex items-center space-x-2">
+          <MapPin className="w-4 h-4 text-gray-500" />
+          <span className="text-gray-600">{experience.location}</span>
+        </div>
       </div>
-      <p className="text-gray-700 mb-4">Duration: {experience.duration}</p>
+      <Badge variant="secondary" className="flex items-center">
+        <Calendar className="w-4 h-4 mr-1" />
+        {experience.startDate} - {experience.endDate}
+      </Badge>
+    </div>
+
+    <div>
       <h4 className="font-semibold mb-2">Key Responsibilities:</h4>
-      <ul className="list-disc pl-5 mb-4">
+      <ul className="list-disc pl-5 space-y-1">
         {experience.responsibilities.map((resp, index) => (
-          <li key={index} className="text-gray-700 mb-1">{resp}</li>
+          <li key={index} className="text-gray-700">{resp}</li>
         ))}
       </ul>
+    </div>
+
+    <div>
       <h4 className="font-semibold mb-2">Technologies Used:</h4>
       <div className="flex flex-wrap gap-2">
         {experience.technologies.map((tech, index) => (
           <Badge key={index} variant="outline">{tech}</Badge>
         ))}
       </div>
-    </CardContent>
-  </Card>
+    </div>
+  </div>
 );
 
 const WorkExperience = () => {
@@ -116,10 +120,29 @@ const WorkExperience = () => {
           <Briefcase className="w-8 h-8 mr-2" />
           Work Experience
         </h2>
-        <div className="max-w-3xl mx-auto">
-          {experiences.map((exp, index) => (
-            <ExperienceCard key={index} experience={exp} />
-          ))}
+        <div className="max-w-4xl mx-auto">
+          <Tabs defaultValue={experiences[0].position} className="w-full">
+            <TabsList className="grid w-full grid-cols-3 mb-8">
+              {experiences.map((exp) => (
+                <TabsTrigger
+                  key={exp.position}
+                  value={exp.position}
+                  className="text-sm md:text-base"
+                >
+                  {exp.position}
+                </TabsTrigger>
+              ))}
+            </TabsList>
+            {experiences.map((exp) => (
+              <TabsContent key={exp.position} value={exp.position}>
+                <Card>
+                  <CardContent className="p-6">
+                    <ExperienceContent experience={exp} />
+                  </CardContent>
+                </Card>
+              </TabsContent>
+            ))}
+          </Tabs>
         </div>
       </div>
     </section>
