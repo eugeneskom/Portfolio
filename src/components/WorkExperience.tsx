@@ -39,7 +39,7 @@ const experiences: WorkExperience[] = [
   },
   {
     company: "Tel Aviv Pituah",
-    location: "Israel",
+    location: "Israel, Remote",
     position: "Front-End Developer",
     duration: "1.5 years",
     startDate: "2022",
