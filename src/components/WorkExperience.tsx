@@ -1,8 +1,8 @@
-import React from 'react';
-import { Card, CardContent } from '@/components/ui/card';
-import { Badge } from '@/components/ui/badge';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { Briefcase, Calendar, Building2, MapPin } from 'lucide-react';
+import React from "react";
+import { Card, CardContent } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Briefcase, Calendar, Building2, MapPin } from "lucide-react";
 
 // Types remain the same as in your original code
 type Technology = string;
@@ -23,7 +23,7 @@ const experiences: WorkExperience[] = [
   {
     company: "Freelance",
     location: "Remote",
-    position: "Full-Stack Developer",
+    position: "Full-Stack Dev",
     duration: "Current",
     startDate: "2023",
     endDate: "Present",
@@ -33,14 +33,14 @@ const experiences: WorkExperience[] = [
       "Create RESTful and GraphQL APIs for seamless front-end and back-end integration",
       "Implement responsive designs with Tailwind CSS and other modern CSS frameworks",
       "Deploy and maintain applications on VPS using Ubuntu, Docker, and Nginx",
-      "Collaborate with clients to understand requirements and deliver high-quality solutions"
+      "Collaborate with clients to understand requirements and deliver high-quality solutions",
     ],
-    technologies: ["React", "Next.js", "Node.js", "Express.js", "MongoDB", "PostgreSQL", "Docker", "GraphQL", "Tailwind CSS"]
+    technologies: ["React", "Next.js", "Node.js", "Express.js", "MongoDB", "PostgreSQL", "Docker", "GraphQL", "Tailwind CSS"],
   },
   {
     company: "Tel Aviv Pituah",
     location: "Israel, Remote",
-    position: "Front-End Developer",
+    position: "Front-End Dev",
     duration: "1.5 years",
     startDate: "2022",
     endDate: "2023",
@@ -51,14 +51,14 @@ const experiences: WorkExperience[] = [
       "Utilized version control systems (Git) for efficient code management and collaboration",
       "Participated in code reviews and implemented best practices for clean, maintainable code",
       "Worked on optimizing web applications for maximum speed and scalability",
-      "Assisted in the implementation of state management solutions using Redux Toolkit"
+      "Assisted in the implementation of state management solutions using Redux Toolkit",
     ],
-    technologies: ["React", "Next.js", "TypeScript", "Tailwind CSS", "Git", "RESTful APIs", "Redux Toolkit"]
+    technologies: ["React", "Next.js", "TypeScript", "Tailwind CSS", "Git", "RESTful APIs", "Redux Toolkit"],
   },
   {
     company: "Freelance",
     location: "Remote",
-    position: "Web Developer",
+    position: "Web Dev",
     duration: "7 months",
     startDate: "2022",
     endDate: "2022",
@@ -67,10 +67,10 @@ const experiences: WorkExperience[] = [
       "Created and customized WordPress themes and plugins",
       "Implemented design mockups into functional web pages",
       "Collaborated with clients to gather requirements and deliver projects on time",
-      "Optimized website performance and implemented SEO best practices"
+      "Optimized website performance and implemented SEO best practices",
     ],
-    technologies: ["HTML", "CSS", "SCSS", "JavaScript", "WordPress"]
-  }
+    technologies: ["HTML", "CSS", "SCSS", "JavaScript", "WordPress"],
+  },
 ];
 
 const ExperienceContent = ({ experience }: { experience: WorkExperience }) => (
@@ -96,7 +96,9 @@ const ExperienceContent = ({ experience }: { experience: WorkExperience }) => (
       <h4 className="font-semibold mb-2">Key Responsibilities:</h4>
       <ul className="list-disc pl-5 space-y-1">
         {experience.responsibilities.map((resp, index) => (
-          <li key={index} className="text-gray-700">{resp}</li>
+          <li key={index} className="text-gray-700">
+            {resp}
+          </li>
         ))}
       </ul>
     </div>
@@ -105,7 +107,9 @@ const ExperienceContent = ({ experience }: { experience: WorkExperience }) => (
       <h4 className="font-semibold mb-2">Technologies Used:</h4>
       <div className="flex flex-wrap gap-2">
         {experience.technologies.map((tech, index) => (
-          <Badge key={index} variant="outline">{tech}</Badge>
+          <Badge key={index} variant="outline">
+            {tech}
+          </Badge>
         ))}
       </div>
     </div>
@@ -122,13 +126,9 @@ const WorkExperience = () => {
         </h2>
         <div className="max-w-4xl mx-auto">
           <Tabs defaultValue={experiences[0].position} className="w-full">
-            <TabsList className="grid w-full grid-cols-3 mb-8">
+            <TabsList className="grid grid-cols-3 sm:grid-cols-5 lg:grid-cols-7 mb-8 gap-2">
               {experiences.map((exp) => (
-                <TabsTrigger
-                  key={exp.position}
-                  value={exp.position}
-                  className="text-sm md:text-base"
-                >
+                <TabsTrigger key={exp.position} value={exp.position} className="text-xs sm:text-sm md:text-base">
                   {exp.position}
                 </TabsTrigger>
               ))}
