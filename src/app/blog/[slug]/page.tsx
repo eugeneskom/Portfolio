@@ -130,10 +130,10 @@ export default async function BlogPost({ params }: { params: { slug: string } })
 
   return (
     <section className="py-16 bg-gray-50">
-      <div className="container mx-auto px-4">
+      <div className="container mx-auto px-0">
         <Card className="overflow-hidden max-w-5xl mx-auto">
           <Image src={featuredImageUrl} alt={article.title.rendered} width={1200} height={600} className="w-full h-64 object-cover" />
-          <CardContent className="p-8">
+          <CardContent className="p-3">
             <div className="flex justify-between items-center text-sm text-gray-500 mb-4">
               <div className="flex items-center">
                 <Calendar className="w-4 h-4 mr-1" />
