@@ -105,7 +105,7 @@ export async function generateMetadata({ params }: { params: { slug: string } })
     },
   };
 }
-
+// social share button
 const SocialShareButton: React.FC<{ href: string; icon: React.ReactNode; label: string }> = ({ href, icon, label }) => (
   <Button asChild variant="outline" size="sm" className="flex items-center gap-2">
     <a href={href} target="_blank" rel="noopener noreferrer">
