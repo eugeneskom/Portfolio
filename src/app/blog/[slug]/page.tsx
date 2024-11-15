@@ -68,9 +68,6 @@ async function getBlogPost(slug: string): Promise<BlogPostProps> {
   const article = postResponse.data[0];
   const tags = tagsResponse.data;
 
-  console.log("Full article data:", article);
-  console.log("SEO data:", article.rank_math_seo);
-
   return { article, tags };
 }
 
